@@ -1,3 +1,11 @@
+# fork from :Jspreadsheet CE v4: The JavaScript spreadsheet
+https://github.com/jspreadsheet/ce
+
+main branch : junki555_dev
+
+---
+original README.md
+
 # Jspreadsheet CE v4: The JavaScript spreadsheet 
 
 <b>Jexcel CE</b> has been renamed to <b>Jspreadsheet CE</b><br><br> 
