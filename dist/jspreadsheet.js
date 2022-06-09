@@ -148,7 +148,7 @@ a[0]&&(null===f||n[1]<f)&&(f=n[1]);n[0]===c[0]&&(null===h||n[1]>h)&&(h=n[1])}els
 
 var jSuites = {};
 
-var Version = '4.13.4';
+var Version = '4.13.5';
 
 var Events = function() {
 
@@ -168,7 +168,7 @@ var Events = function() {
     }
 
     var isOpened = function(e) {
-        if (document.jSuitesCurrent && document.jsuitesComponents.length > 0) {
+        if (document.jsuitesComponents && document.jsuitesComponents.length > 0) {
             for (var i = 0; i < document.jsuitesComponents.length; i++) {
                 if (document.jsuitesComponents[i] && ! find(e, document.jsuitesComponents[i])) {
                     document.jsuitesComponents[i].close();
@@ -4106,8 +4106,20 @@ jSuites.dropdown = (function(el, options) {
     }
 
     obj.setData = function(data) {
+        // Reset current value
+        resetValue();
+
+        // Make sure the content container is blank
+        content.innerHTML = '';
+
+        // Reset
+        obj.header.value = '';
+
+        // Reset items and values
+        obj.items = [];
+
         // Prepare data
-        if (data.length) {
+        if (data && data.length) {
             for (var i = 0; i < data.length; i++) {
                 // Compatibility
                 if (typeof(data[i]) != 'object') {
@@ -4126,24 +4138,17 @@ jSuites.dropdown = (function(el, options) {
                 }
             }
 
-            // Reset current value
-            resetValue();
-
-            // Make sure the content container is blank
-            content.innerHTML = '';
-
-            // Reset
-            obj.header.value = '';
-
-            // Reset items and values
-            obj.items = [];
-
             // Append data
             obj.appendData(data);
 
             // Update data
             obj.options.data = data;
+        } else {
+            // Update data
+           obj.options.data = [];
         }
+
+        obj.close();
     }
 
     obj.getData = function() {

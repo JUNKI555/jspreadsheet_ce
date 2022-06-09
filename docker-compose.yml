@@ -18,6 +18,9 @@ services:
       build:
         context: .
         dockerfile: resources/docker/transpile.Dockerfile
+      tty: true
+      stdin_open: true
+      command: tail -f /dev/null
       volumes:
         - .:/var/base
       depends_on:
