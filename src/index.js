@@ -1,7 +1,20 @@
 /**
+ * @license
+ * (c) jSuites Javascript Web Components
+ *
+ * Website: https://jsuites.net
+ * Description: Create amazing web based applications.
+ *
+ * MIT License
+ *
+ */
+
+/**
+ * @license
  * Jspreadsheet v4.10.1
  *
  * Website: https://bossanova.uk/jspreadsheet/
+ * and fork junki555: https://github.com/JUNKI555/jspreadsheet_ce
  * Description: Create amazing web based spreadsheets.
  *
  * This software is distribute under MIT License
