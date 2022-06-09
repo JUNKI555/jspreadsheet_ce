@@ -13014,7 +13014,9 @@ if (! jSuites && typeof(require) === 'function') {
                     obj.filter.appendChild(td);
                 }
 
-                obj.thead.appendChild(obj.filter);
+                // thead(ヘッダ)の下ではなく上にフィルタ行を挿入する
+                // obj.thead.appendChild(obj.filter);
+                obj.thead.prepend(obj.filter);
             }
 
             // Content table
