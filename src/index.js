@@ -1,5 +1,16 @@
 /**
  * @license
+ * (c) The Spreadsheet Formula Parser
+ *
+ * Website: https://github.com/jspreadsheet/formula
+ * Description: Jspreadsheet formula is a JavaScript software to parse spreadsheet-like formulas.
+ *
+ * MIT License
+ *
+ */
+
+/**
+ * @license
  * (c) jSuites Javascript Web Components
  *
  * Website: https://jsuites.net
