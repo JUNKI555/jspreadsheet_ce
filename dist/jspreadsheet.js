@@ -12378,7 +12378,7 @@ jSuites.validations = (function() {
 
 /**
  * @license
- * Jspreadsheet v4.11.0
+ * Jspreadsheet v4.11.1
  *
  * Website: https://bossanova.uk/jspreadsheet/
  * and fork junki555: https://github.com/JUNKI555/jspreadsheet_ce
@@ -13025,9 +13025,7 @@ if (! jSuites && typeof(require) === 'function') {
                     obj.filter.appendChild(td);
                 }
 
-                // thead(ヘッダ)の下ではなく上にフィルタ行を挿入する
-                // obj.thead.appendChild(obj.filter);
-                obj.thead.prepend(obj.filter);
+                obj.thead.appendChild(obj.filter);
             }
 
             // Content table
@@ -13393,7 +13391,7 @@ if (! jSuites && typeof(require) === 'function') {
            return dataset;
         }
 
-         /**
+        /**
          * Get the whole table data
          *
          * @param bool disable filter
@@ -13402,7 +13400,7 @@ if (! jSuites && typeof(require) === 'function') {
          * @return array data
          */
         obj.getFilteredDataWithHeader = function(disableFilter = false, excludeHeader = false, dataOnly = false) {
-            var filtered = !disableFilter && obj.options.search == true && obj.results;
+            var filtered = !disableFilter && obj.results;
             var dataType = dataOnly == true || obj.options.copyCompatibility == false ? true : false;
 
             // Column and row length
@@ -13422,10 +13420,10 @@ if (! jSuites && typeof(require) === 'function') {
             dataset[py] = headers;
             py++;
             for (var j = 0; j < y; j++) {
+                dataset[py] = [];
                 px = 0;
                 for (var i = 0; i < x; i++) {
-                    var targetY = filtered ? results[j] : j;
-                    dataset[py] = [];
+                    var targetY = filtered ? obj.results[j] : j;
                     if (!dataType) {
                         dataset[py][px] = obj.records[targetY][i].innerHTML;
                     } else {
