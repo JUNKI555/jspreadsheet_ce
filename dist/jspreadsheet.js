@@ -12356,6 +12356,17 @@ jSuites.validations = (function() {
 },{}],3:[function(require,module,exports){
 /**
  * @license
+ * (c) The Spreadsheet Formula Parser
+ *
+ * Website: https://github.com/jspreadsheet/formula
+ * Description: Jspreadsheet formula is a JavaScript software to parse spreadsheet-like formulas.
+ *
+ * MIT License
+ *
+ */
+
+/**
+ * @license
  * (c) jSuites Javascript Web Components
  *
  * Website: https://jsuites.net
@@ -12367,7 +12378,7 @@ jSuites.validations = (function() {
 
 /**
  * @license
- * Jspreadsheet v4.10.1
+ * Jspreadsheet v4.11.0
  *
  * Website: https://bossanova.uk/jspreadsheet/
  * and fork junki555: https://github.com/JUNKI555/jspreadsheet_ce
@@ -13380,6 +13391,52 @@ if (! jSuites && typeof(require) === 'function') {
            }
 
            return dataset;
+        }
+
+         /**
+         * Get the whole table data
+         *
+         * @param bool disable filter
+         * @param bool exclude header
+         * @param bool data only
+         * @return array data
+         */
+        obj.getFilteredDataWithHeader = function(disableFilter = false, excludeHeader = false, dataOnly = false) {
+            var filtered = !disableFilter && obj.options.search == true && obj.results;
+            var dataType = dataOnly == true || obj.options.copyCompatibility == false ? true : false;
+
+            // Column and row length
+            var x = obj.options.columns.length;
+            var y = filtered ? obj.results.length : obj.options.data.length;
+
+            if (x <= 0) {
+                return [];
+            }
+
+            var headers = obj.headers.map(td => td.innerHTML);
+
+            // Go through the columns to get the data
+            var dataset = [];
+            var px = 0;
+            var py = 0;
+            dataset[py] = headers;
+            py++;
+            for (var j = 0; j < y; j++) {
+                px = 0;
+                for (var i = 0; i < x; i++) {
+                    var targetY = filtered ? results[j] : j;
+                    dataset[py] = [];
+                    if (!dataType) {
+                        dataset[py][px] = obj.records[targetY][i].innerHTML;
+                    } else {
+                        dataset[py][px] = obj.options.data[targetY][i];
+                    }
+                    px++;
+                }
+                py++;
+            }
+
+            return dataset;
         }
 
         /**

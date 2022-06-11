@@ -22,7 +22,7 @@
 
 /**
  * @license
- * Jspreadsheet v4.10.1
+ * Jspreadsheet v4.11.0
  *
  * Website: https://bossanova.uk/jspreadsheet/
  * and fork junki555: https://github.com/JUNKI555/jspreadsheet_ce
