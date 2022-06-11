@@ -89,8 +89,33 @@
     overflow: hidden;
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
+    white-space: nowrap;
     z-index:2;
+}
+
+.jexcel > thead > tr:nth-child(1) > td
+{
+    top: 0;
+}
+
+.jexcel > thead > tr:nth-child(2) > td
+{
+    top: 0.9rem;
+}
+
+.jexcel > thead > tr:nth-child(3) > td
+{
+    top: 1.8rem;
+}
+
+.jexcel > thead > tr:nth-child(4) > td
+{
+    top: 2.7rem;
+}
+
+.jexcel > thead > tr:nth-child(5) > td
+{
+    top: 3.6rem;
 }
 
 .jexcel_container.with-toolbar .jexcel > thead > tr > td
@@ -127,7 +152,9 @@
 
 .jexcel > tbody > tr > td:first-child
 {
-    position:relative;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
     background-color:#f3f3f3;
     text-align:center;
 }
