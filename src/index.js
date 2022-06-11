@@ -1026,6 +1026,52 @@ if (! jSuites && typeof(require) === 'function') {
            return dataset;
         }
 
+         /**
+         * Get the whole table data
+         *
+         * @param bool disable filter
+         * @param bool exclude header
+         * @param bool data only
+         * @return array data
+         */
+        obj.getFilteredDataWithHeader = function(disableFilter = false, excludeHeader = false, dataOnly = false) {
+            var filtered = !disableFilter && obj.options.search == true && obj.results;
+            var dataType = dataOnly == true || obj.options.copyCompatibility == false ? true : false;
+
+            // Column and row length
+            var x = obj.options.columns.length;
+            var y = filtered ? obj.results.length : obj.options.data.length;
+
+            if (x <= 0) {
+                return [];
+            }
+
+            var headers = obj.headers.map(td => td.innerHTML);
+
+            // Go through the columns to get the data
+            var dataset = [];
+            var px = 0;
+            var py = 0;
+            dataset[py] = headers;
+            py++;
+            for (var j = 0; j < y; j++) {
+                px = 0;
+                for (var i = 0; i < x; i++) {
+                    var targetY = filtered ? results[j] : j;
+                    dataset[py] = [];
+                    if (!dataType) {
+                        dataset[py][px] = obj.records[targetY][i].innerHTML;
+                    } else {
+                        dataset[py][px] = obj.options.data[targetY][i];
+                    }
+                    px++;
+                }
+                py++;
+            }
+
+            return dataset;
+        }
+
         /**
         * Get json data by row number
         *
