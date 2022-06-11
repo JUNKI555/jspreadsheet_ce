@@ -100,22 +100,22 @@
 
 .jexcel > thead > tr:nth-child(2) > td
 {
-    top: 0.9rem;
+    top: 1.8rem;
 }
 
 .jexcel > thead > tr:nth-child(3) > td
 {
-    top: 1.8rem;
+    top: 3.6rem;
 }
 
 .jexcel > thead > tr:nth-child(4) > td
 {
-    top: 2.7rem;
+    top: 5.4rem;
 }
 
 .jexcel > thead > tr:nth-child(5) > td
 {
-    top: 3.6rem;
+    top: 7.2rem;
 }
 
 .jexcel_container.with-toolbar .jexcel > thead > tr > td
